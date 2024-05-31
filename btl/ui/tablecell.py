@@ -42,22 +42,18 @@ class TwoLineTableCell(QtGui.QWidget):
         self.vbox.addWidget(self.label_upper)
         self.vbox.addWidget(self.label_lower)
 
-        style = "color: {}".format(fg_color.name())
         self.label_left = QtGui.QLabel()
         self.label_left.setMinimumWidth(40)
         self.label_left.setTextFormat(QtCore.Qt.RichText)
         self.label_left.setAlignment(QtCore.Qt.AlignCenter|QtCore.Qt.AlignVCenter)
-        self.label_left.setStyleSheet(style)
 
-        self.icon_size = QtCore.QSize(50, 60)
+        self.icon_size = QtCore.QSize(75, 90) #Upped the icoon from 50x60 to 75x90
         self.icon_widget = QtGui.QLabel()
 
-        style = "color: {}".format(fg_color.name())
         self.label_right = QtGui.QLabel()
         self.label_right.setMinimumWidth(40)
         self.label_right.setTextFormat(QtCore.Qt.RichText)
         self.label_right.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_right.setStyleSheet(style)
 
         self.hbox = QtGui.QHBoxLayout()
         self.hbox.addWidget(self.label_left, 0)
@@ -75,7 +71,7 @@ class TwoLineTableCell(QtGui.QWidget):
 
     def _update(self):
         text = self._highlight(self.tool_no)
-        text = f"<b>{text}</b>" if text else ''
+        text = f"<b><h4>{text}</h4></b>" if text else ''
         self.label_left.setText(text)
 
         text = self._highlight(self.pocket)
@@ -88,7 +84,7 @@ class TwoLineTableCell(QtGui.QWidget):
 
         text = self._highlight(self.lower_text)
         self.label_lower.setText(text)
-        self.label_lower.setText(f'{text}')
+        self.label_lower.setText(f'<h4>{text}</h4>')
 
     def set_tool_no(self, no):
         self.tool_no = str(no)
